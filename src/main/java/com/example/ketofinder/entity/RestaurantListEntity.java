@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "restaurant_list")
 @Data
@@ -18,4 +19,7 @@ public class RestaurantListEntity {
 
     @Column(name = "restaurant_name")
     private String restaurantName;
+
+    @OneToMany(mappedBy = "restaurantListEntity")
+    private List<RestaurantItemEntity> items;
 }

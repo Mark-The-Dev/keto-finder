@@ -11,5 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 public class RestaurantBundleDTO {
     private String restaurantName;
-    List<RestaurantItemDTO> restaurantItems;
+    private List<RestaurantItemDTO> restaurantItems;
 }
