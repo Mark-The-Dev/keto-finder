@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RestaurantItemDTO {
-    private String itemName;
-    private String itemDescription;
+    private String mealName;
+    private String mealDescription;
     private float calories;
     private float proteinValue;
     private float carbValue;
