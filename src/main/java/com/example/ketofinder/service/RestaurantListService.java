@@ -26,7 +26,7 @@ public class RestaurantListService {
         List<RestaurantListEntity> listEntities = restaurantListRepository.findRestaurantListEntities();
 
         List<RestaurantBundleDTO> bundleList = listEntities.stream().map( listItem ->
-                new RestaurantBundleDTO(listItem.getRestaurantName(), listItem.getItems().stream().map(item ->
+                new RestaurantBundleDTO(listItem.getId() , listItem.getRestaurantName(), listItem.getItems().stream().map(item ->
                 new RestaurantItemDTO(
                         item.getItemName(),
                         item.getItemDescription(),

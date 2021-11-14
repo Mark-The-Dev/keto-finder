@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RestaurantBundleDTO {
+    private long restaurantId;
     private String restaurantName;
     private List<RestaurantItemDTO> restaurantItems;
 }
