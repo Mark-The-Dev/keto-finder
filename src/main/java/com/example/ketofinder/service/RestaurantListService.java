@@ -38,4 +38,12 @@ public class RestaurantListService {
 
         return bundleList;
     }
+
+    public void addRestaurant(RestaurantBundleDTO restaurantBundleDTO){
+
+        RestaurantListEntity restaurantListEntity = new RestaurantListEntity();
+        restaurantListEntity.setRestaurantName(restaurantBundleDTO.getRestaurantName());
+        restaurantListRepository.save(restaurantListEntity);
+
+    }
 }
