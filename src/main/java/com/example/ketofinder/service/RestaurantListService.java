@@ -2,7 +2,9 @@ package com.example.ketofinder.service;
 
 import com.example.ketofinder.dto.RestaurantBundleDTO;
 import com.example.ketofinder.dto.RestaurantItemDTO;
+import com.example.ketofinder.entity.RestaurantItemEntity;
 import com.example.ketofinder.entity.RestaurantListEntity;
+import com.example.ketofinder.repository.RestaurantItemRepository;
 import com.example.ketofinder.repository.RestaurantListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +16,15 @@ import java.util.stream.Collectors;
 public class RestaurantListService {
 
     private RestaurantListRepository restaurantListRepository;
+    private RestaurantItemRepository restaurantItemRepository;
 
     @Autowired
     public RestaurantListService (
-        RestaurantListRepository restaurantListRepository
+        RestaurantListRepository restaurantListRepository,
+        RestaurantItemRepository restaurantItemRepository
     ){
         this.restaurantListRepository = restaurantListRepository;
+        this.restaurantItemRepository = restaurantItemRepository;
     }
 
     public List<RestaurantBundleDTO> findAllItems() {
@@ -32,6 +37,7 @@ public class RestaurantListService {
                         item.getItemDescription(),
                         item.getCalories(),
                         item.getProteinValue(),
+                        item.getFatValue(),
                         item.getCarbValue(),
                         item.getNetCarbValue())
                 ).collect(Collectors.toList()))).collect(Collectors.toList());
@@ -45,5 +51,22 @@ public class RestaurantListService {
         restaurantListEntity.setRestaurantName(restaurantBundleDTO.getRestaurantName());
         restaurantListRepository.save(restaurantListEntity);
 
+    }
+
+    public void addRestaurantItem(RestaurantItemDTO restaurantItemDTO, String restaurantId){
+        RestaurantListEntity restaurantListEntity = restaurantListRepository.findById(Long.parseLong(restaurantId));
+        RestaurantItemEntity restaurantItemEntity = new RestaurantItemEntity();
+
+
+        restaurantItemEntity.setRestaurantListEntity(restaurantListEntity);
+        restaurantItemEntity.setItemName(restaurantItemDTO.getMealName());
+        restaurantItemEntity.setItemDescription(restaurantItemDTO.getMealDescription());
+        restaurantItemEntity.setCalories(restaurantItemDTO.getCalories());
+        restaurantItemEntity.setProteinValue(restaurantItemDTO.getProteinValue());
+        restaurantItemEntity.setFatValue(restaurantItemDTO.getFatValue());
+        restaurantItemEntity.setCarbValue(restaurantItemDTO.getCarbValue());
+        restaurantItemEntity.setNetCarbValue(restaurantItemDTO.getNetCarbValue());
+
+        restaurantItemRepository.save(restaurantItemEntity);
     }
 }

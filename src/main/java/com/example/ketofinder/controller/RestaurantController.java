@@ -39,7 +39,7 @@ public class RestaurantController {
     @CrossOrigin(origins = "http://localhost:4200")
     public void addNewRestaurantMeal(@RequestBody RestaurantItemDTO restaurantItemDTO, @PathVariable String restaurantId) {
 
-        // TODO: add item
+        restaurantListService.addRestaurantItem(restaurantItemDTO, restaurantId);
     }
 
 }

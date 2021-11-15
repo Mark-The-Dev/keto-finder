@@ -12,6 +12,7 @@ public class RestaurantItemDTO {
     private String mealDescription;
     private float calories;
     private float proteinValue;
+    private float fatValue;
     private float carbValue;
     private float netCarbValue;
 }
