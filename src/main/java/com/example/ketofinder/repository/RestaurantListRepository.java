@@ -12,6 +12,8 @@ public interface RestaurantListRepository extends CrudRepository<RestaurantListE
 
     RestaurantListEntity findById(long id);
 
-    @Query(value = "select * from restaurant_list", nativeQuery = true)
+    RestaurantListEntity findByRestaurantName(String restaurantName);
+
+    @Query(value = "select * from restaurant_list order by restaurant_name", nativeQuery = true)
     List<RestaurantListEntity> findRestaurantListEntities();
 }
