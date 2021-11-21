@@ -27,11 +27,11 @@ public class RestaurantController {
         return restaurantListService.findAllItems();
     }
 
-    @GetMapping("/restaurants/{restaurantName}")
+    @GetMapping("/restaurants/{restaurantId}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public RestaurantBundleDTO findRestaurantById(@PathVariable String restaurantName) {
+    public RestaurantBundleDTO findRestaurantById(@PathVariable String restaurantId) {
 
-        return restaurantListService.getRestaurantById(restaurantName);
+        return restaurantListService.getRestaurantById(restaurantId);
 
     }
 
