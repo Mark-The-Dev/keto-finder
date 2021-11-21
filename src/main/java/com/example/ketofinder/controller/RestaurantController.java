@@ -29,9 +29,9 @@ public class RestaurantController {
 
     @GetMapping("/restaurants/{restaurantName}")
     @CrossOrigin(origins = "http://localhost:4200")
-    public RestaurantBundleDTO findAllRestaurants(@PathVariable String restaurantName) {
+    public RestaurantBundleDTO findRestaurantById(@PathVariable String restaurantName) {
 
-        return restaurantListService.getRestaurantByName(restaurantName);
+        return restaurantListService.getRestaurantById(restaurantName);
 
     }
 

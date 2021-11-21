@@ -45,9 +45,9 @@ public class RestaurantListService {
         return bundleList;
     }
 
-    public RestaurantBundleDTO getRestaurantByName(String restaurantName) {
+    public RestaurantBundleDTO getRestaurantById(String restaurantId) {
 
-        RestaurantListEntity restaurantListEntity = restaurantListRepository.findByRestaurantName(restaurantName);
+        RestaurantListEntity restaurantListEntity = restaurantListRepository.findById(Long.parseLong(restaurantId));
 
         return new RestaurantBundleDTO(restaurantListEntity.getId() ,
                 restaurantListEntity.getRestaurantName(),
